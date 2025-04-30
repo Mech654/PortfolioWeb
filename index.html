@@ -357,12 +357,17 @@
             const indicators = Array.from(document.querySelectorAll('.carousel-indicator'));
             
             let currentIndex = 0;
-            const cardWidth = cards[0].getBoundingClientRect().width;
-            
+            function getCardWidth() {
+                return cards[0].getBoundingClientRect().width;
+            }
+            let cardWidth = getCardWidth();
+            window.addEventListener('resize', () => {
+                cardWidth = getCardWidth();
+                updateCarousel();
+            });
             // Set initial position
             function updateCarousel() {
                 track.style.transform = `translateX(${-currentIndex * cardWidth}px)`;
-                
                 // Update indicators
                 indicators.forEach((indicator, index) => {
                     if (index === currentIndex) {
@@ -371,7 +376,6 @@
                         indicator.classList.remove('current');
                     }
                 });
-                
                 // Update 3D project for the current visible card
                 updateActiveProject(currentIndex);
             }

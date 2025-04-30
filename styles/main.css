@@ -709,58 +709,98 @@ body {
     transform: translateY(0);
 }
 
-/* Responsive styles for contact form */
-@media (max-width: 768px) {
+/* --- MOBILE RESPONSIVE IMPROVEMENTS --- */
+@media (max-width: 700px) {
+    .main-content {
+        flex-direction: column;
+        gap: 2rem;
+        padding: calc(var(--nav-height) + 1rem) 0.5rem 1.5rem;
+    }
+    .about {
+        flex-direction: column;
+        gap: 1.2rem;
+        align-items: stretch;
+    }
+    .profile-container {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+        flex: unset;
+    }
+    .profile-box {
+        padding: 1.2rem;
+        aspect-ratio: unset;
+    }
+    .contact-box {
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+    .about-container {
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .about-box {
+        padding: 1.2rem;
+    }
+    .nav-content {
+        padding: 0 0.5rem;
+        height: 48px;
+    }
+    .nav-links {
+        gap: 1.2rem;
+    }
+    .nav-links a {
+        font-size: 0.95rem;
+        padding: 0.3rem 0;
+    }
+    .section-header {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+/* --- CONTACT FORM FIXES --- */
+@media (max-width: 700px) {
     .contact-form {
-        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
     }
-    
-    .contact-intro {
-        flex-direction: column;
-        text-align: center;
-        padding: 1.5rem;
+    .form-group {
+        min-width: 0;
+        width: 100%;
     }
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .about-section {
-        margin-bottom: 4rem; /* Smaller spacing on mobile */
-    }
-    
-    .project-card {
-        flex-direction: column;
-    }
-    
-    .carousel-track-container {
-        width: 90%;
-    }
-    
-    .project-img-container {
-        height: 180px;
+    .form-group input, .form-group textarea {
+        min-width: 0;
+        width: 100%;
+        box-sizing: border-box;
     }
 }
 
+/* --- CAROUSEL BUTTONS FIXES --- */
 @media (max-width: 900px) {
-    .carousel-container {
-        max-width: 90%;
-        overflow: hidden; /* Hide overflow on smaller screens */
-        padding: 0 1rem; /* Add padding to give space for buttons */
-    }
-    
     .carousel-btn {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+        left: 0 !important;
+        right: 0 !important;
+        top: unset;
+        bottom: -50px;
+        transform: none;
+        margin: 0 10px;
+        position: static;
+        display: inline-flex;
     }
-    
-    .prev-btn {
-        left: 0;
+    .carousel-container {
+        flex-direction: column;
+        align-items: center;
     }
-    
-    .next-btn {
-        right: 0;
+    .carousel-track-container {
+        width: 100%;
     }
+    .carousel-nav {
+        margin-top: 1.5rem;
+    }
+}
+
+.carousel-container {
+    flex-wrap: wrap;
 }
